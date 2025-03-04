@@ -1,3 +1,29 @@
+const mousetable = Array.from(document.getElementsByClassName('box'));
+
+// MouseOver & mouseOut for all spots
+mousetable.forEach(box => {
+    box.addEventListener('mouseover', myfunction1);
+    box.addEventListener('mouseout', myfunction2); 
+});
+
+// Set the background image on mouseover
+function myfunction1() {
+    if (!this.classList.contains('boxComputer')) { // Check if not occupied by computer
+        this.style.backgroundColor = '#FFA000'; // Set boxHuman color
+        this.style.backgroundImage = "url('img/o.svg')"; // Set the image
+        this.style.backgroundSize = 'cover'; // Optional: cover the entire box
+        this.style.backgroundPosition = 'center'; // Optional: center the image
+    }
+}
+
+// Function mouseout
+function myfunction2() { 
+    if (!this.classList.contains('boxComputer')) { 
+        this.style.backgroundColor = ''; 
+        this.style.backgroundImage = ''; 
+    }
+}
+
 // Game table to play on.
 const table = Array.from(document.querySelectorAll('.box'));
 let currenP = 'o'; // Player 'o' starts
