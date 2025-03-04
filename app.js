@@ -1,46 +1,4 @@
-// Mouse table function to avoid problems or name conflicts
-const mousetable = Array.from(document.getElementsByClassName('box'));
-
-// MouseOver & mouseOut for all spots
-mousetable.forEach(box => {
-    box.addEventListener('mouseover', myfunction1);
-    box.addEventListener('touchstart', myfunction2);
-});
-//Set the background color on mouseover
-function myfunction1() {
-    if (!this.classList.contains('boxComputer')) { // Check if not occupied by computer
-        this.style.backgroundColor = '#FFA000'; //set  boxHuman-color.
-    }
-}
-
-//set background color on touch devices
-function myfunction2() {
-    if (!this.classList.contains('boxComputer')) { 
-        this.style.backgroundColor = '#FFA000'; // set boxHuman,-color on touch-devices,iPhone,some tabs e.g.
-    }
-}
-
-mousetable.forEach(box => {
-    box.addEventListener('mouseout', myfunction3);
-    box.addEventListener('touchend', myfunction4); 
-});
-// Reset the background color on mouseout
-function myfunction3 { 
-    if (!this.classList.contains('boxComputer')) { // Check not occupied by player 'boxHuman',if not;
-        this.style.backgroundColor = ''; // ...then reset to deafult color.
-    }
-}
-//Same as function3 but touchend for touch devices.
-function myfunction4() {
-    if (!this.classList.contains('boxComputer')) { 
-        this.style.backgroundColor = ''; 
-    }
-}
- 
-
- 
-
-//Game table to play on.
+// Game table to play on.
 const table = Array.from(document.querySelectorAll('.box'));
 let currenP = 'o'; // Player 'o' starts
 let movesPlayed = []; // To track moves, to check for Draw.
@@ -67,63 +25,67 @@ function myfunction(e) {
 
     // If box is already clicked (occupied), ignore the click
     if (table[index].classList.contains('boxHuman') || table[index].classList.contains('boxComputer')) {
-        return; // Ignore the click if the spot is taken
+        return; 
     }
 
     // Player 'o' move
     if (currenP === 'o') {
-        table[index].classList.add('boxHuman'); // 'boxHuman'
+        table[index].classList.add('boxHuman'); 
         movesPlayed.push(index);
-console.log( movesPlayed)
+
         // Check for winner
         if (checkWinner()) {
             setTimeout(() => {
-                alert(currenP + " " + "wins! Restart?");
+                alert(currenP + " wins! Restart?");
                 restart();
             }, 100);
             return;
         }
-
-        // Switch to the next player
-        currenP = 'x';
-
-        // Computer's move
-        computerMove();
     }
-console.log(movesPlayed)
-}
 
-// Function to handle computer's move
-function computerMove() {
+    // Switch to the next player
+    currenP = 'x';
+
+    // Function to handle computer's move
     const availableMoves = table
         .map((box, index) => (box.classList.contains('boxHuman') || box.classList.contains('boxComputer')) ? null : index)
         .filter(index => index !== null);
 
-    const move = availableMoves[Math.floor(Math.random() * availableMoves.length)];
+    // Check if there are available moves before making a move
+    if (availableMoves.length === 0) {
+        alert("It's a draw! Restart?");
+        restart();
+        return; // Exit if it's a draw
+    }
 
+    const move = availableMoves[Math.floor(Math.random() * availableMoves.length)];
+console.log('Human_index_=_'  + index + '_' +  '_Remove-Box__ ' + index + '_TotalMove_=_ ' +  movesPlayed.length + '_freeBoxes_=_ ' + availableMoves)
     // Add class to the computer's move box
     table[move].classList.add('boxComputer');
     movesPlayed.push(move);
-
+console.log('PC_index_=_'  + index + '_' +  '_Remove-Box__ ' + index + '_TotalMove_=_ ' +  movesPlayed.length + '_freeBoxes_=_ ' + availableMoves)
     // Check for winner
     if (checkWinner()) {
         setTimeout(() => {
-            alert(currenP + " " + "wins! Restart?");
+            alert(currenP + " wins! Restart?");
             restart();
         }, 100);
         return;
     }
 
-    // Switch to the next player
-    currenP = 'o';
-
-    // If all moves are played, it's a draw
-    if (movesPlayed.length === 9) {
-        setTimeout(() => {
-            alert("Draw! Restart?");
-            restart();
-        }, 100);
+    // Check for draw after the computer's move
+    if (availableMoves.length === 1) { 
+        alert("It's a draw! Restart?");
+        restart();
         return;
+    }
+
+    // Switch to the next player
+    currenP = currenP === 'o' ? 'x' : 'o';
+
+    // If computer's turn  make computer move
+    if (currenP === 'x') {
+        setTimeout(computerMove, 300);  //  Simulate pc  thinking.
     }
 }
 
@@ -138,8 +100,17 @@ function checkWinner() {
     }
     return false;
 }
-
-// Restart the game
+/*
+// Restart game easy and safe way: 
 function restart() {
-    window.location.reload(); // Reload to restart the game
+    window.location.reload(); // Reload the page to restart game.
+}
+*/
+// But it's a js challange so teacher like;
+function restart() {
+    movesPlayed = [];  // Reset the counter.  
+    //Clean the table
+    table.forEach(box => {
+        box.classList.remove('boxHuman', 'boxComputer'); 
+    });
 }
