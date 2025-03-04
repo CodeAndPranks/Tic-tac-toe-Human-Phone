@@ -6,37 +6,34 @@ mousetable.forEach(box => {
     box.addEventListener('mouseover', myfunction1);
     box.addEventListener('touchstart', myfunction2);
 });
-
+//Set the background color on mouseover
 function myfunction1() {
-    // Set the background color on mouseover
     if (!this.classList.contains('boxComputer')) { // Check if not occupied by computer
-        this.style.backgroundColor = '#FFA000'; // Set to desired color
+        this.style.backgroundColor = '#FFA000'; //set  boxHuman-color.
     }
 }
 
+//set background color on touch devices
 function myfunction2() {
-    // Set the background color on touchstart
-    if (!this.classList.contains('boxComputer')) { // Check if not occupied by computer
-        this.style.backgroundColor = '#FFA000'; // Set to desired color
+    if (!this.classList.contains('boxComputer')) { 
+        this.style.backgroundColor = '#FFA000'; // set boxHuman,-color on touch-devices,iPhone,some tabs e.g.
     }
 }
 
 mousetable.forEach(box => {
     box.addEventListener('mouseout', myfunction3);
-    box.addEventListener('touchend', myfunction4); // Use touchend for touch devices
+    box.addEventListener('touchend', myfunction4); 
 });
-
-function myfunction3() {
-    // Reset the background color on mouseout
-    if (!this.classList.contains('boxComputer')) { // Check if not occupied by computer
-        this.style.backgroundColor = ''; // Reset to default
+// Reset the background color on mouseout
+function myfunction { 
+    if (!this.classList.contains('boxComputer')) { // Check not occupied by player 'boxHuman',if not;
+        this.style.backgroundColor = ''; // ...then reset to deafult color.
     }
 }
-
+//Same as function3 but touchend for touch devices.
 function myfunction4() {
-    // Reset the background color on touchend
-    if (!this.classList.contains('boxComputer')) { // Check if not occupied by computer
-        this.style.backgroundColor = ''; // Reset to default
+    if (!this.classList.contains('boxComputer')) { 
+        this.style.backgroundColor = ''; 
     }
 }
  
