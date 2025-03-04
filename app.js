@@ -25,7 +25,7 @@ mousetable.forEach(box => {
     box.addEventListener('touchend', myfunction4); 
 });
 // Reset the background color on mouseout
-function myfunction { 
+function myfunction3 { 
     if (!this.classList.contains('boxComputer')) { // Check not occupied by player 'boxHuman',if not;
         this.style.backgroundColor = ''; // ...then reset to deafult color.
     }
