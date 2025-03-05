@@ -126,13 +126,15 @@ function checkWinner() {
     }
     return false;
 }
-/*
+
 // Restart game easy and safe way: 
 function restart() {
     window.location.reload(); // Reload  page to reset game.
 }
-*/
-// But it's a js challange so teacher like;
+/*                     LET STAY !
+//Somthing like this show hover's color&img[not classList], after restart().
+//Annoying,but game work,and click beside table at start remove the hover-img.
+
 function restart() {
     currenP = 'o';
     movesPlayed = [];  // Reset the counter.  
@@ -141,3 +143,4 @@ function restart() {
         box.classList.remove('boxHuman', 'boxComputer'); 
     });
 }
+*/
