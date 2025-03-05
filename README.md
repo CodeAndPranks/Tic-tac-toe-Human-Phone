@@ -5,5 +5,5 @@ phone,with winn and draw alert,a winning-array,hover-efect for human player with
 My first Tic,Tac,toe during the js challange.If use 'manually reset' some Android device show hover image after restart,not with 'window.location.reload().This code got a few key functions different from the script below and stay for learning and as a memory:
 https://codeandpranks.github.io/Tic-tac-toe-Human-Phone
  
-![Video:My final resoult](https://github.com/CodeAndPranks/TicTacToe-Human-VS-PC/raw/main/ttt.mp4)
+[Video:My final resoult](https://github.com/CodeAndPranks/TicTacToe-Human-VS-PC/raw/main/ttt.mp4)
 
