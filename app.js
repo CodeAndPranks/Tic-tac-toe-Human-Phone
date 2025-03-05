@@ -10,9 +10,7 @@ mousetable.forEach(box => {
 function myfunction1() {
     if (!this.classList.contains('boxComputer')) { // Check if not occupied by computer
         this.style.backgroundColor = '#FFA000'; // Set boxHuman color
-        this.style.backgroundImage = "url('img/o.svg')"; // Set the image
-        this.style.backgroundSize = 'cover'; // Optional: cover the entire box
-        this.style.backgroundPosition = 'center'; // Optional: center the image
+        this.style.backgroundImage = "url('img/o.svg')"; // Set the image.
     }
 }
 
@@ -26,7 +24,7 @@ function myfunction2() {
 
 // Game table to play on.
 const table = Array.from(document.querySelectorAll('.box'));
-let currenP = 'o'; // Player 'o' starts
+let currenP = 'o'; // Player 'o' (boxHuman) start
 let movesPlayed = []; // To track moves, to check for Draw.
 const winnCombos = [
     [0, 1, 2],
@@ -49,17 +47,17 @@ function myfunction(e) {
     const boxArr = Array.from(document.getElementsByClassName('box'));
     const index = boxArr.indexOf(e.target);
 
-    // If box is already clicked (occupied), ignore the click
+// If box is already clicked (occupied), ignore the click
     if (table[index].classList.contains('boxHuman') || table[index].classList.contains('boxComputer')) {
         return; 
     }
 
-    // Player 'o' move
+// Player 'o' move
     if (currenP === 'o') {
         table[index].classList.add('boxHuman'); 
         movesPlayed.push(index);
 
-        // Check for winner
+// Check for winner
         if (checkWinner()) {
             setTimeout(() => {
                 alert(currenP + " wins! Restart?");
@@ -69,26 +67,28 @@ function myfunction(e) {
         }
     }
 
-    // Switch to the next player
+ // Switch to the next player
     currenP = 'x';
 
-    // Function to handle computer's move
+ // Function to handle computer's move
     const availableMoves = table
         .map((box, index) => (box.classList.contains('boxHuman') || box.classList.contains('boxComputer')) ? null : index)
         .filter(index => index !== null);
 
-    // Check if there are available moves before making a move
+// Check if there are available moves before making a move
     if (availableMoves.length === 0) {
         alert("It's a draw! Restart?");
         restart();
-        return; // Exit if it's a draw
+        return; //  if it's a draw
     }
 
     const move = availableMoves[Math.floor(Math.random() * availableMoves.length)];
 console.log('Human_index_=_'  + index + '_' +  '_Remove-Box__ ' + index + '_TotalMove_=_ ' +  movesPlayed.length + '_freeBoxes_=_ ' + availableMoves)
-    // Add class to the computer's move box
+    
+// Add class to the computer's move box
     table[move].classList.add('boxComputer');
     movesPlayed.push(move);
+    
 console.log('PC_index_=_'  + index + '_' +  '_Remove-Box__ ' + index + '_TotalMove_=_ ' +  movesPlayed.length + '_freeBoxes_=_ ' + availableMoves)
     // Check for winner
     if (checkWinner()) {
@@ -99,17 +99,17 @@ console.log('PC_index_=_'  + index + '_' +  '_Remove-Box__ ' + index + '_TotalMo
         return;
     }
 
-    // Check for draw after the computer's move
+// Check for draw after the computer's move
     if (availableMoves.length === 1) { 
         alert("It's a draw! Restart?");
         restart();
         return;
     }
 
-    // Switch to the next player
+// Switch to the next player
     currenP = currenP === 'o' ? 'x' : 'o';
 
-    // If computer's turn  make computer move
+ // If computer's turn  make computer move
     if (currenP === 'x') {
         setTimeout(computerMove, 300);  //  Simulate pc  thinking.
     }
@@ -129,13 +129,14 @@ function checkWinner() {
 /*
 // Restart game easy and safe way: 
 function restart() {
-    window.location.reload(); // Reload the page to restart game.
+    window.location.reload(); // Reload  page to reset game.
 }
 */
 // But it's a js challange so teacher like;
 function restart() {
+    currenP = 'o';
     movesPlayed = [];  // Reset the counter.  
-    //Clean the table
+//Clean the table
     table.forEach(box => {
         box.classList.remove('boxHuman', 'boxComputer'); 
     });
