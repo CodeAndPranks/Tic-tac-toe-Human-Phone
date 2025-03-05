@@ -7,5 +7,3 @@ https://codeandpranks.github.io/Tic-tac-toe-Human-Phone
  
 ![Video:My final resoult](https://github.com/CodeAndPranks/TicTacToe-Human-VS-PC/raw/main/ttt.mp4)
 
-Final reult:
-https://codeandpranks.github.io/TicTacToe-Human-VS-PC
