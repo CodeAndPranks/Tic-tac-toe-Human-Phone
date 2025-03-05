@@ -14,7 +14,7 @@ https://github.com/CodeAndPranks/TicTacToe-Human-VS-PC
 # Demo link:
 https://codeandpranks.github.io/TicTacToe-Human-VS-PC
 
-
-
+<hr>
 
 <p align="center">(<a href="#up">To page top</a>)</p>
+<hr>
