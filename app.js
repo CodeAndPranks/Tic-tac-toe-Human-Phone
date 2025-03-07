@@ -1,12 +1,12 @@
 const mousetable = Array.from(document.getElementsByClassName('box'));
 
-// MouseOver & mouseOut for all spots
+// MouseOver & mouseOut for each box
 mousetable.forEach(box => {
     box.addEventListener('mouseover', myfunction1);
     box.addEventListener('mouseout', myfunction2); 
 });
 
-// Set the background image on mouseover
+// Set the background image+color on mouseover for empty boxes.
 function myfunction1() {
     if (!this.classList.contains('boxComputer')) { // Check if not occupied by computer
         this.style.backgroundColor = '#FFA000'; // Set boxHuman color
@@ -14,7 +14,7 @@ function myfunction1() {
     }
 }
 
-// Function mouseout
+// Reset box to background image+color on mouseOut if box not occipied.
 function myfunction2() { 
     if (!this.classList.contains('boxComputer')) { 
         this.style.backgroundColor = ''; 
@@ -81,15 +81,19 @@ function myfunction(e) {
         restart();
         return; //  if it's a draw
     }
+ const move = availableMoves[Math.floor(Math.random() * availableMoves.length)];
 
-    const move = availableMoves[Math.floor(Math.random() * availableMoves.length)];
+//Debug For Human:
 console.log('Human_index_=_'  + index + '_' +  '_Remove-Box__ ' + index + '_TotalMove_=_ ' +  movesPlayed.length + '_freeBoxes_=_ ' + availableMoves)
     
-// Add class to the computer's move box
+    // Add class to the computer's move box
     table[move].classList.add('boxComputer');
     movesPlayed.push(move);
     
-console.log('PC_index_=_'  + index + '_' +  '_Remove-Box__ ' + index + '_TotalMove_=_ ' +  movesPlayed.length + '_freeBoxes_=_ ' + availableMoves)
+//Debug for Computer:  
+ console.log('PC_index_=_'  + move + '_'  + '_TotalMove_=_ ' +  movesPlayed.length )
+ console.log( 'Table_Content:' , table )
+
     // Check for winner
     if (checkWinner()) {
         setTimeout(() => {
