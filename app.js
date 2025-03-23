@@ -40,13 +40,14 @@ const winnCombos = [
 // Add Event listener to each box.
 table.forEach(box => {
     box.addEventListener('click', myfunction);
+    box.addEventListener('touchstart', myfunction); // touchstart for iPhone many tabs etc.
 });
 
 // GAME START
 function myfunction(e) {
     const boxArr = Array.from(document.getElementsByClassName('box'));
     const index = boxArr.indexOf(e.target);
-
+   e.preventDefault(); // Prevent 'hover-image' when reload due to (by) touch event.
 // If box is already clicked (occupied), ignore the click
     if (table[index].classList.contains('boxHuman') || table[index].classList.contains('boxComputer')) {
         return; 
@@ -77,8 +78,10 @@ function myfunction(e) {
 
 // Check if there are available moves before making a move
     if (availableMoves.length === 0) {
+          setTimeout(() => {  //To add classList to box, before DRAW alert pop up.
         alert("It's a draw! Restart?");
         restart();
+         }, 100);    
         return; //  if it's a draw
     }
  const move = availableMoves[Math.floor(Math.random() * availableMoves.length)];
@@ -102,14 +105,6 @@ console.log('Human_index_=_'  + index + '_' +  '_Remove-Box__ ' + index + '_Tota
         }, 100);
         return;
     }
-
-// Check for draw after the computer's move
-    if (availableMoves.length === 1) { 
-        alert("It's a draw! Restart?");
-        restart();
-        return;
-    }
-
 // Switch to the next player
     currenP = currenP === 'o' ? 'x' : 'o';
 
@@ -135,9 +130,11 @@ function checkWinner() {
 function restart() {
     window.location.reload(); // Reload  page to reset game.
 }
-/*                     LET STAY !
-//Somthing like this show hover's color&img[not classList], after restart().
-//Annoying,but game work,and click beside table at start remove the hover-img.
+}
+/*                     A side-note !
+//Somthing like this show hover's color&img [not classList] when reload/ restart.
+//Therfore window.location.reload() used  to reset all variables to deafult.
+//wrap hover function and set to 'hide' when page load ? Another day:)
 
 function restart() {
     currenP = 'o';
@@ -148,3 +145,4 @@ function restart() {
     });
 }
 */
+
