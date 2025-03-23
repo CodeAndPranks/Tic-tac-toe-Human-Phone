@@ -25,7 +25,7 @@ function myfunction2() {
 // Game table to play on.
 const table = Array.from(document.querySelectorAll('.box'));
 let currenP = 'o'; // Player 'o' (boxHuman) start
-let movesPlayed = []; // To track moves, to check for Draw.
+let movesPlayed = []; // counter 
 const winnCombos = [
     [0, 1, 2],
     [3, 4, 5],
