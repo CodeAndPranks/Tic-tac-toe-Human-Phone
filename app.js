@@ -40,14 +40,12 @@ const winnCombos = [
 // Add Event listener to each box.
 table.forEach(box => {
     box.addEventListener('click', myfunction);
-    box.addEventListener('touchstart', myfunction); // touchstart for iPhone many tabs etc.
 });
 
 // GAME START
 function myfunction(e) {
     const boxArr = Array.from(document.getElementsByClassName('box'));
     const index = boxArr.indexOf(e.target);
-   e.preventDefault(); // Prevent 'hover-image' when reload due to (by) touch event.
 // If box is already clicked (occupied), ignore the click
     if (table[index].classList.contains('boxHuman') || table[index].classList.contains('boxComputer')) {
         return; 
@@ -110,7 +108,7 @@ console.log('Human_index_=_'  + index + '_' +  '_Remove-Box__ ' + index + '_Tota
 
  // If computer's turn  make computer move
     if (currenP === 'x') {
-        setTimeout(computerMove, 300);  //  Simulate pc  thinking.
+        setTimeout(computerMove, 300);  
     }
 }
 
