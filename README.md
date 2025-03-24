@@ -1,9 +1,9 @@
 <a id="up"></a>
-# Tic-tac-toe-Human-Phone.A js challange:
+# Tic-tac-toe-Human-Phone.js challange:remove app.js and:
  "Make js file,don't touch CSS or html ! Bulid a tic,tac,toe vs Pc/
-phone,with winn and draw alert,a winning-array,hover-efect for human player with mouseover/mouseout,and a reset function.Google ok,GPT NOT!"
+phone,with winn and draw alert,a winning-array,hover-effect for human player with mouseover/mouseout,and a reset function.Google ok,GPT is NOT!"
 
-My first working Tic,Tac,toe during this js challange.This code got a few key functions different from the script below and stay for for learning and as a memory:
+My first working Tic,Tac,toe during this js challange.This code got a few key functions different from code abowe.It stay as memory:
 https://codeandpranks.github.io/Tic-tac-toe-Human-Phone
 # Video:
 [TicTacToe :My final resoult](https://github.com/CodeAndPranks/TicTacToe-Human-VS-PC/raw/main/ttt.mp4)
